@@ -4,6 +4,8 @@
 
 **在线使用：<https://ianyet.github.io/jxr-editor/>**
 
+内置示例为微软 Windows HDR 壁纸 **blue_colorballs.jxr（蓝色彩球）**，3840 × 2560、64 bpp 半浮点 HDR。点击“试用 Windows HDR 壁纸”即可加载。
+
 ## 功能
 
 - 多选或拖入 `.jxr` / `.wdp` / `.hdp`，也可打开或拖入整个文件夹（包含子目录，自动跳过其他格式）；支持 RGB/RGBA 32 位浮点、16 位半浮点及常见整数格式。
@@ -84,4 +86,4 @@ bash scripts/deploy-pages.sh
 
 ## 开源致谢
 
-实现参考 [tfx2001/jxr2uhdr](https://github.com/tfx2001/jxr2uhdr) 的浮点处理与 80/203 参考白点换算，其 MIT 许可样本用于演示和测试（提交 `d2c133846ee262b33b8a7bb1514add2f6c35b55e`）。使用微软 jxrlib、Google libultrahdr 和 libjpeg-turbo。完整第三方许可证随页面分发，见 [public/licenses](public/licenses/)。
+实现参考 [tfx2001/jxr2uhdr](https://github.com/tfx2001/jxr2uhdr) 的浮点处理与 80/203 参考白点换算，其日出样本保留用于回归测试（提交 `d2c133846ee262b33b8a7bb1514add2f6c35b55e`）。内置蓝色彩球示例采用项目所有者提供的微软 Windows HDR 壁纸原文件。使用微软 jxrlib、Google libultrahdr 和 libjpeg-turbo。第三方来源及许可证说明随页面分发，见 [public/licenses](public/licenses/)。

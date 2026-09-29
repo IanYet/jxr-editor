@@ -20,7 +20,7 @@ function decodeHdr(bytes: Uint8Array) {
   } finally { module._free(p); module._hdr_clear(); }
 }
 test('external real f32 JXR decodes at source dimensions and keeps HDR brightness', () => {
-  const im=decodeJxr(module,readFileSync(new URL('../public/samples/sunrise-hdr.jxr',import.meta.url)));
+  const im=decodeJxr(module,readFileSync(new URL('./fixtures/sunrise-hdr.jxr',import.meta.url)));
   assert.equal(im.width,3440); assert.equal(im.height,1440); assert.equal(im.bits,128);
   assert(Math.abs(stats(im).peakNits - 9425.426)<1);
   assert(im.data.some(v=>v<0));
@@ -40,7 +40,7 @@ test('float JXR export round-trips superwhite values, negative channels and alph
   for(let i=0;i<back.data.length;i++) assert(Math.abs(back.data[i]-im.data[i])<.005,`channel ${i}`);
 });
 test('external real f16 JXR retains its half-float HDR values', () => {
-  const image = decodeJxr(module, readFileSync(new URL('./fixtures/blue_colorballs.jxr', import.meta.url)));
+  const image = decodeJxr(module, readFileSync(new URL('../public/samples/blue_colorballs.jxr', import.meta.url)));
   assert.equal(image.bits, 64); assert.equal(image.width, 3840); assert.equal(image.height, 2560);
   assert(Math.abs(stats(image).peakNits - 1382.7655) < 1);
 });
@@ -62,7 +62,7 @@ test('HDR JPEG supports odd dimensions with no silent crop', () => {
   assert.equal(back.width,37); assert.equal(back.height,19);
 });
 test('full-resolution real photograph exports and reconstructs as HDR', () => {
-  const image = decodeJxr(module, readFileSync(new URL('../public/samples/sunrise-hdr.jxr', import.meta.url)));
+  const image = decodeJxr(module, readFileSync(new URL('./fixtures/sunrise-hdr.jxr', import.meta.url)));
   const bytes = encode(module, image, 'ultrahdr', defaultTone, 95);
   const back = decodeHdr(bytes);
   assert.equal(back.width, 3440); assert.equal(back.height, 1440);

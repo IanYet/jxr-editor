@@ -94,7 +94,7 @@ test('folder selection includes nested JXR files and skips unrelated files on mo
 });
 
 test('crop fields retain the chosen aspect ratio and native-pixel magnifier follows edge and corner drags', async ({ page }, testInfo) => {
-  await page.goto('./'); await page.locator('#file-input').setInputFiles(path.join(root, 'public/samples/sunrise-hdr.jxr'));
+  await page.goto('./'); await page.locator('#file-input').setInputFiles(path.join(root, 'tests/fixtures/sunrise-hdr.jxr'));
   await ready(page, 'sunrise-hdr.jxr'); await page.locator('#toast-close').click();
   await page.locator('[data-ratio="16:9"]').click();
   await number(page, '#crop-w', '1024'); await expect(page.locator('#crop-h')).toHaveValue('576');

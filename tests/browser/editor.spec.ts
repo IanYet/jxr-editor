@@ -6,7 +6,7 @@ import create from '../../public/codecs/codecs.mjs';
 import { decodeJxr } from '../../src/codec';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
-const fixture=path.join(root,'public/samples/sunrise-hdr.jxr');
+const fixture=path.join(root,'tests/fixtures/sunrise-hdr.jxr');
 test('local JXR editing and all four download formats work without uploading photos',async({page},testInfo)=>{
   const errors:string[]=[]; const outgoing:string[]=[];
   page.on('pageerror',error=>errors.push(error.message));
@@ -79,6 +79,11 @@ test('mobile layout, bundled example, and native download are usable',async({pag
   expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBe(390);
   await page.screenshot({path:testInfo.outputPath('mobile-empty.png'),fullPage:true});
   await page.locator('#demo').click(); await expect(page.locator('#export')).toBeEnabled({timeout:45000});
+  await expect(page.locator('#filename')).toHaveText('blue_colorballs.jxr');
+  await expect(page.locator('#metric-size')).toContainText('3840 × 2560');
+  await expect(page.locator('#source-badge')).toContainText('64 bpp');
+  await expect(page.locator('#metric-peak')).toContainText('1,383');
+  await page.screenshot({path:testInfo.outputPath('mobile-hdr-wallpaper.png'),fullPage:true});
   await page.locator('[data-ratio="9:16"]').click();
   await page.locator('#crop-toggle').click();
   await page.locator('#output-width').fill('180'); await page.locator('#output-width').press('Tab');
