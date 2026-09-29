@@ -1,10 +1,12 @@
 /// <reference lib="webworker" />
 import { decodeJxr, encode, loadCodec, type CodecModule } from './codec.ts';
 import { stats, transform, fullEdit, defaultTone, type FloatImage, type Edit, type Tone, type ExportFormat } from './core.ts';
+import { pixelDetail } from './detail.ts';
 
 export type Request = { id: number; baseUrl: string } & (
   | { type: 'load'; bytes: ArrayBuffer }
   | { type: 'preview'; edit: Edit; tone: Tone; original?: boolean }
+  | { type: 'detail'; x: number; y: number; tone: Tone }
   | { type: 'export'; edit: Edit; tone: Tone; format: ExportFormat; quality: number }
 );
 let modulePromise: Promise<CodecModule> | undefined;
@@ -30,9 +32,15 @@ async function handle(request: Request) {
       const preview = jpegPreview(transform(image, fullEdit(image), 1500));
       const sdr = encode(module, preview, 'jpeg', defaultTone, 88);
       const hdr = encode(module, preview, 'ultrahdr', defaultTone, 88);
-      self.postMessage({ id, result: { ...info, hdr, sdr } }, [hdr.buffer, sdr.buffer]);
+      const thumb = encode(module, jpegPreview(transform(image, fullEdit(image), 160)), 'jpeg', defaultTone, 75);
+      self.postMessage({ id, result: { ...info, hdr, sdr, thumb } }, [hdr.buffer, sdr.buffer, thumb.buffer]);
     } else {
       if (!original) throw new Error('请先打开一张 JXR 照片。');
+      if (request.type === 'detail') {
+        const result = pixelDetail(original, request.x, request.y, request.tone);
+        self.postMessage({ id, result }, [result.pixels.buffer]);
+        return;
+      }
       let image = transform(original, request.type === 'preview' && request.original ? fullEdit(original) : request.edit, request.type === 'preview' ? 1500 : undefined);
       if (request.type === 'preview') {
         image = jpegPreview(image);
