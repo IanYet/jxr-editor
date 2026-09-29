@@ -50,6 +50,15 @@
 - 默认正式地址已返回 HTTPS 200；通过 Chromium 从公网加载正式页面，再次执行相同的 3 组端到端测试，全部通过（14.9 秒）。实际下载了 Ultra HDR、Apple Adaptive HDR、JXR 和 SDR JPEG，并验证尺寸与 HDR 标记。
 - 公网验收没有上传照片、未处理的页面异常或移动端横向溢出。
 
+## 多图浏览与裁剪改进发布
+
+- 应用源码提交：`8a16234f911f9d1a9193621f47e89401c873cf11`。
+- Pages 部署提交：`07aa8a29d13bf5606d023484216ca4d996c235aa`。
+- [GitHub Pages 部署任务](https://github.com/IanYet/jxr-editor/actions/runs/36552936169) 已完成，结果为 success。
+- 正式页面 HTTPS 200，加载新资源 `index-CprqJOBb.js`、`index-Bp3cLhYP.css`、`worker-CR9jedGF.js`；默认域名和 HTTPS 配置保持正常。
+- 对 `https://ianyet.github.io/jxr-editor/` 执行全部 8 组浏览器测试，全部通过（47.5 秒）。覆盖新增的多选、文件夹子目录、多文件拖入、独立编辑与切换、比例联动、像素放大镜，以及原有四种格式下载和手机布局。
+- 新功能验收与四格式回归中没有照片上传请求或未处理的页面异常。
+
 ## 真实性边界
 
 浏览器中的照片实际处理、文件编码和 HDR 数值重建均已验证。此环境为无头 Chromium、SDR 显示，无法验证实体 HDR 屏幕的实际发光亮度，也未在真实 iPhone / Mac Photos 上做实机测试。Apple 导出依据 Apple 官方 Adaptive HDR JPEG / ISO 21496-1 格式，明确不是 HEIC。
