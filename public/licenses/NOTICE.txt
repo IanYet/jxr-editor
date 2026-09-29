@@ -1,0 +1,27 @@
+Luma JXR HDR Editor — third-party notices
+
+1. JPEG XR codec: Microsoft / 4creators/jxrlib
+   https://github.com/4creators/jxrlib
+   Commit: f7521879862b9085318e814c6157490dd9dbbdb4
+   BSD 2-Clause, copyright Microsoft Corp. See jxrlib.txt.
+
+2. Ultra HDR codec: Google libultrahdr v1.4.0
+   https://github.com/google/libultrahdr
+   Apache 2.0. See libultrahdr.txt.
+
+3. JPEG codec: libjpeg-turbo 3.0.1
+   https://github.com/libjpeg-turbo/libjpeg-turbo
+   BSD/IJG/zlib. See libjpeg-turbo.txt and libjpeg-ijg.txt.
+   This software is based in part on the work of the Independent JPEG Group.
+
+4. Reference pipeline and sample images: tfx2001/jxr2uhdr
+   https://github.com/tfx2001/jxr2uhdr
+   Copyright (c) 2026 tfx2001, MIT. See jxr2uhdr.txt.
+   Reference commit: d2c133846ee262b33b8a7bb1514add2f6c35b55e
+   sunrise-hdr.jxr and blue_colorballs.jxr are redistributed under this license.
+
+The application uses no remote image-processing service and no analytics.
+
+5. Noto Sans SC UI character subset: Google / Adobe
+   SIL Open Font License 1.1. See noto-sans-sc.txt.
+   Self-hosted; no Google Fonts connection is made by the application.

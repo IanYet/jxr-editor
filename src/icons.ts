@@ -1,0 +1,21 @@
+const paths: Record<string, string> = {
+  folder: '<path d="M3 7h6l2-2h9v14H3z"/><path d="M3 10h17"/>',
+  upload: '<path d="M12 16V4m-5 5 5-5 5 5M4 15v5h16v-5"/>',
+  download: '<path d="M12 3v13m-5-5 5 5 5-5M4 17v4h16v-4"/>',
+  crop: '<path d="M6 3v15h15M3 6h15v15"/>',
+  tune: '<path d="M4 7h7m4 0h5M4 17h3m4 0h9"/><circle cx="13" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>',
+  image: '<rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 6-6 4 4 3-3 5 5"/>',
+  shield: '<path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6z"/><path d="m8 12 3 3 5-6"/>',
+  reset: '<path d="M3 10a9 9 0 1 1 2 8M3 4v6h6"/>',
+  link: '<path d="m10 13 4-4m-6 6-2 2a4 4 0 0 1-5-5l5-5a4 4 0 0 1 5 0m2 10a4 4 0 0 0 5 0l5-5a4 4 0 0 0-5-5l-2 2" transform="translate(1 0) scale(.9)"/>',
+  flipx: '<path d="M3 12h18M6 8h12l-6-6zm0 8h12l-6 6z"/>',
+  flipy: '<path d="M12 3v18M8 6v12l-6-6zm8 0v12l6-6z"/>',
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4 4l2 2m12 12 2 2M4 20l2-2M18 6l2-2"/>',
+  check: '<path d="m5 12 4 4L19 6"/>',
+  expand: '<path d="M3 9V3h6m6 0h6v6M3 15v6h6m6 0h6v-6"/>',
+  info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/>',
+  github: '<path d="M9 20c-5 1-5-3-7-3m14 5v-4c0-1-.5-2-1-2 4-.5 6-2 6-6 0-2-1-3-1-3 0-1 0-3-1-4-2 0-3 1-4 1a15 15 0 0 0-6 0C8 4 7 3 5 3 4 4 4 6 5 7c-1 1-2 2-2 4 0 4 3 5 6 5-1 1-1 2-1 3v3"/>',
+  arrow: '<path d="M5 12h14m-6-6 6 6-6 6"/>',
+  close: '<path d="m6 6 12 12M6 18 18 6"/>',
+};
+export const icon = (name: string, cls = '') => `<svg class="icon ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name] ?? paths.image}</svg>`;
