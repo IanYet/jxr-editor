@@ -59,6 +59,16 @@
 - 对 `https://ianyet.github.io/jxr-editor/` 执行全部 8 组浏览器测试，全部通过（47.5 秒）。覆盖新增的多选、文件夹子目录、多文件拖入、独立编辑与切换、比例联动、像素放大镜，以及原有四种格式下载和手机布局。
 - 新功能验收与四格式回归中没有照片上传请求或未处理的页面异常。
 
+## 默认示例改为 Windows HDR 壁纸
+
+- 内置示例改为项目所有者提供的 `blue_colorballs.jxr`，3840 × 2560、64 bpp 半浮点 HDR，解码峰值约 1382.766 nits。
+- Windows 原文件、本地公开资源与从正式网站下载的 JXR，SHA-256 均为 `e7c5756021a8f78a7afa72eccad6759c2db477a47d41c84879a82aee13678c6d`，确认没有改写原图数据。
+- 日出照片移至 `tests/fixtures/sunrise-hdr.jxr` 保留回归用途；生产内置资源为 `public/samples/blue_colorballs.jxr`。
+- 本地 21 项核心测试、8 组浏览器测试（15.1 秒）及生产构建通过。新示例截图人工检查通过。
+- 应用源码提交：`03c579a8ecbf28f2a34af198162ab834ec72220a`；Pages 部署提交：`bcad8b8fbc39c9c9bd1fc731aaa175dca875c31f`。
+- [Pages 部署任务](https://github.com/IanYet/jxr-editor/actions/runs/36556871957) 成功；正式页面已加载 `index-BXpjHYj2.js`。
+- 线上内置示例浏览器用例通过（7.0 秒）：核对文件名、3840 × 2560 尺寸、64 bpp、1,383 nits 显示，并实际完成裁剪与 Apple HDR 下载；手机页面无横向溢出。
+
 ## 真实性边界
 
 浏览器中的照片实际处理、文件编码和 HDR 数值重建均已验证。此环境为无头 Chromium、SDR 显示，无法验证实体 HDR 屏幕的实际发光亮度，也未在真实 iPhone / Mac Photos 上做实机测试。Apple 导出依据 Apple 官方 Adaptive HDR JPEG / ISO 21496-1 格式，明确不是 HEIC。
