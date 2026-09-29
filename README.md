@@ -47,7 +47,7 @@ npx playwright install --with-deps chromium
 npm run test:e2e
 ```
 
-如果使用现有 Chromium，可设置 `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`。`TEST_BASE_URL` 可指向已启动的生产服务或已部署 Pages，运行相同的端到端测试。
+如果使用现有 Chromium，可设置 `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`。`TEST_BASE_URL` 可指向已启动的生产服务或已部署 Pages，运行相同的端到端测试。公网测试需要网络代理时可设置 `TEST_PROXY`。
 
 验证包含两份真实 JXR（128 bpp f32 与 64 bpp f16）、JXR 重新解码像素误差、HDR JPEG 80/203 白点与亮度重建、ISO/XMP/MPF/ICC 结构、奇数输出尺寸、四种映射、损坏文件恢复，以及浏览器选图、裁剪、镜像、全部下载和手机布局。
 

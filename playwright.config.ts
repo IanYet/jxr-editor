@@ -8,6 +8,7 @@ export default defineConfig({
     baseURL: process.env.TEST_BASE_URL || 'http://127.0.0.1:5173',
     viewport: { width: 1440, height: 1000 },
     launchOptions: { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH },
+    proxy: process.env.TEST_PROXY ? { server: process.env.TEST_PROXY } : undefined,
     screenshot: 'only-on-failure',
     trace: 'retain-on-failure',
   },

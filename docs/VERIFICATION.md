@@ -32,6 +32,16 @@
 
 相同浏览器测试另对静态生产目录的 `/jxr-editor/` 子路径执行，3 组全部通过，验证 Pages 路径、Worker、WASM、字体和样片加载。
 
+## 公网发布
+
+- 公开源码仓库：https://github.com/IanYet/jxr-editor
+- 正式地址：https://ianyet.github.io/jxr-editor/
+- Pages：`gh-pages` 分支根目录，HTTPS enforced = true，GitHub 状态为 built。
+- 部署提交：`0f112338a3c3b5a545cc3dae74bc06cc329e6f98`；应用源码提交：`f8f3b8325a0d2c0db2ab180df6fde3aeb3551d6a`。
+- [GitHub Pages 部署任务](https://github.com/IanYet/jxr-editor/actions/runs/36536872527)：build、report-build-status、deploy 均成功。
+- 默认正式地址已返回 HTTPS 200；通过 Chromium 从公网加载正式页面，再次执行相同的 3 组端到端测试，全部通过（14.9 秒）。实际下载了 Ultra HDR、Apple Adaptive HDR、JXR 和 SDR JPEG，并验证尺寸与 HDR 标记。
+- 公网验收没有上传照片、未处理的页面异常或移动端横向溢出。
+
 ## 真实性边界
 
 浏览器中的照片实际处理、文件编码和 HDR 数值重建均已验证。此环境为无头 Chromium、SDR 显示，无法验证实体 HDR 屏幕的实际发光亮度，也未在真实 iPhone / Mac Photos 上做实机测试。Apple 导出依据 Apple 官方 Adaptive HDR JPEG / ISO 21496-1 格式，明确不是 HEIC。
